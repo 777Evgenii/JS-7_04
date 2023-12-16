@@ -15,20 +15,20 @@ describe("Github page tests", () => {
     await firstLink.click();
     await page.waitForSelector('h1');
     const title2 = await page.title();
-    expect(title2).toEqual('GitHub: Where the world builds software · GitHub');
-  });
+    expect(title2).toEqual("GitHub for teams · Build like the best teams on the planet · GitHub");
+  }, 20000);
 
   test("The first link attribute", async () => {
-    const actual = await page.$eval("a", link => link.getAttribute('href') );
+    const actual = await page.$eval("a", (link) => link.getAttribute("href"));
     expect(actual).toEqual("#start-of-content");
-  });
+  }, 20000);
 
   test("The page contains Sign in button", async () => {
-    const btnSelector = ".btn-large-mktg.btn-mktg";
+    const btnSelector = ".btn-mktg.btn-large-mktg.btn-muted-mktg";
     await page.waitForSelector(btnSelector, {
       visible: true,
     });
-    const actual = await page.$eval(btnSelector, link => link.textContent);
-    expect(actual).toContain("Sign up for free")
-  });
+    const actual = await page.$eval(btnSelector, (link) => link.textContent);
+    expect(actual).toContain("Sign up for free");
+  }, 20000);
 });
